@@ -62,8 +62,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # update game logic here
-
     # fill the screen with a color to wipe away anything from the last frame
     screen.fill("black")
 
@@ -89,7 +87,7 @@ while running:
             snake = reset()
             current_state = MENU
 
-        snake_head = snake[-1]  # Get the head of the snake
+        snake_head = snake[-1]  # head of the snake
 
         # Check for self-collision
         if any(snake_part.colliderect(snake_head) for snake_part in snake[:-1]):
@@ -106,7 +104,7 @@ while running:
             snake.append(snake_pixel.copy())
             eat_sound.play()
             
-        # You can add your snake movement logic here
+        # snake movement logic here
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP] and current_direction != pygame.K_DOWN:
             snake_direction = (0, -pixel_width)
@@ -121,7 +119,7 @@ while running:
             snake_direction = (pixel_width, 0)
             current_direction = pygame.K_RIGHT
 
-        # Draw snake and target
+        # snake and target
         for snake_part in snake:
             pygame.draw.rect(screen, "green", snake_part)  # Green for snake
 
